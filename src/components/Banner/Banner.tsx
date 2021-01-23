@@ -18,7 +18,6 @@ export const Banner = () => {
   useEffect(() => {
     const fetchData = async () => {
       const request = await axios.get(requests.fetchNetflixOriginals)
-      console.log(request.data.results)
 
       // apiからランダムで値を取得
       setMovie(
@@ -32,8 +31,6 @@ export const Banner = () => {
 
     fetchData()
   }, [])
-
-  console.log(movie)
 
   // descriptionを切り捨てる
   const truncate = (str: any, n: number) => {
