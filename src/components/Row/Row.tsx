@@ -24,15 +24,13 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
   const [movies, setMovies] = useState<Movie[]>([])
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       const request = await axios.get(fetchUrl)
       setMovies(request.data.results)
       return request
     }
     fetchData()
   }, [fetchUrl])
-
-  console.log(movies)
 
   return (
     <div className="Row">
