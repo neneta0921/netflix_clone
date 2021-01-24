@@ -10,9 +10,15 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "@types/youtube": "^0.0.41",
+    "axios": "^0.21.1",
+    "braces": "^3.0.2",
+    "movie-trailer": "^2.0.7",
+    "node-sass": "4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "react-youtube": "^7.13.0",
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
   },
@@ -44,5 +50,21 @@
     "husky": "^4.3.8",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all"
   }
 }
