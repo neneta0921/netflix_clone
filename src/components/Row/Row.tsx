@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import YouTube from 'react-youtube'
+// @ts-ignore
+import movieTrailer from 'movie-trailer'
 
 import axios from '../../axios'
 import './Row.scss'
@@ -27,7 +29,7 @@ type TrailerOptions = {
   }
 }
 
-const base_url = 'https://image.tmdb.org/t/p/original'
+const base_url = 'https://image.tmdb.org/t/p/original/'
 
 export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
   const [movies, setMovies] = useState<Movie[]>([])
@@ -54,10 +56,15 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
     if (trailerUrl) {
       setTrailerUrl('')
     } else {
-      let trailerUrl = await axios.get(
-        `/movie/${movie.id}/videos?api_key=fb34530271b349314af0de263d16ab5a`,
-      )
-      setTrailerUrl(trailerUrl.data.results[0]?.key)
+      try {
+        const trailerUrl = await movieTrailer(
+          movie?.name || movie?.title || movie?.original_name || '',
+        )
+        const urlParams = await new URLSearchParams(new URL(trailerUrl).search)
+        setTrailerUrl(urlParams.get('v'))
+      } catch (error: any) {
+        console.log(error)
+      }
     }
   }
 
