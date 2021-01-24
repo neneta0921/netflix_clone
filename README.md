@@ -1,3 +1,9 @@
+# Netflixのクローンアプリです。
+
+[こちらのチュートリアル](https://zenn.dev/gunners6518/books/4c4672f32dd100)を参考にしました。
+Firebaseにデプロイしました。
+(https://netflix-clone-45c25.web.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
